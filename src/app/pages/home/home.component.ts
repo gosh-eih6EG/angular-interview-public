@@ -4,7 +4,7 @@ import { RouterOutlet } from '@angular/router';
 import { BookListComponent } from '../../book-list/book-list.component';
 import { BookCollectionComponent } from '../../book-collection/book-collection.component';
 import { FormComponent } from '../../form/form.component';
-import { selectBooks } from '../../book-list/books.selectors';
+import { selectAvailableBooks, selectBooks } from '../../book-list/books.selectors';
 import { selectCollection } from '../../book-collection/collections.selectors';
 import { Store } from '@ngrx/store';
 import { BooksActions } from '../../book-list/books.actions';
@@ -18,7 +18,7 @@ import { Book } from '../../book-list/books.model';
   styleUrl: './home.component.scss',
 })
 export class HomeComponent implements OnInit {
-  books$ = this.store.select(selectBooks);
+  books$ = this.store.select(selectAvailableBooks);
   bookCollection$ = this.store.select(selectCollection);
 
   constructor(private store: Store) {}
