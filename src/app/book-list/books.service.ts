@@ -11,10 +11,8 @@ export class GoogleBooksService {
   // TODO 1: complete implementation of getBooks()
   // TODO 2: set query parameters orderBy = "relevance" and q = "Harry Potter"
   // TODO 3: dynamically change q parameter based on method parameter, default value = "Harry Potter"
-  getBooks(): Observable<Array<Book>> {
+  getBooks(query: string): Observable<Array<Book>> {
     const baseUrl = 'https://www.googleapis.com/books/v1/volumes';
-    const query = 'Harry Potter';
-
     let params = new HttpParams().set('orderBy', 'relevance').set('q', query);
 
     return this.http
