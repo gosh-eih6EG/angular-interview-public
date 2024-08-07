@@ -26,6 +26,9 @@ describe('BookComponent', () => {
 
   it('should have title', () => {
     // TODO: complete unit test
-    // expect(titleEl.innerText).toBe('Book Title');
+    const debugEl = fixture.debugElement;
+    const titleEl = debugEl.nativeElement.querySelector('p[data-test="book-title"]');
+
+    expect(titleEl.innerText).toBe('Book Title');
   });
 });
