@@ -1,10 +1,10 @@
-import { TestBed } from "@angular/core/testing";
-import { BooksEffects } from "./books.effects";
-import { Observable } from "rxjs";
-import { Action } from "@ngrx/store";
-import { provideMockActions } from "@ngrx/effects/testing";
+import { TestBed } from '@angular/core/testing';
+import { BooksEffects } from './books.effects';
+import { Observable } from 'rxjs';
+import { Action } from '@ngrx/store';
+import { provideMockActions } from '@ngrx/effects/testing';
 
-describe("BooksEffects", () => {
+describe('BooksEffects', () => {
   let actions$: Observable<Action>;
   let effects: BooksEffects;
 
@@ -16,11 +16,11 @@ describe("BooksEffects", () => {
     effects = TestBed.inject(BooksEffects);
   });
 
-  it("should be created", () => {
+  it('should be created', () => {
     expect(effects).toBeTruthy();
   });
 
-  it("should call GoogleBooksService and return BooksApiActions.retrievedBookList action", () => {
+  it('should call GoogleBooksService and return BooksApiActions.retrievedBookList action', () => {
     // TODO: complete unit test
   });
 });
