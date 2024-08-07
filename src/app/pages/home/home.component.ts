@@ -43,7 +43,7 @@ export class HomeComponent implements OnInit {
     // TODO 1: call GoogleBooksService to get list of books
     // TODO 2: change to NgRx Effect (dispatch action instead of using service directly)
     this.booksService
-      .getMockBooks()
+      .getBooks()
       .subscribe((books) => this.store.dispatch(BooksApiActions.retrievedBookList({ books })));
   }
 }
