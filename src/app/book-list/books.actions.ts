@@ -1,18 +1,18 @@
-import { createActionGroup, props } from "@ngrx/store";
-import { Book } from "./books.model";
+import { createActionGroup, props } from '@ngrx/store';
+import { Book } from './books.model';
 
 export const BooksActions = createActionGroup({
-  source: "Books",
+  source: 'Books',
   events: {
     Search: props<{ query: string }>(),
-    "Add Book": props<{ book: Book }>(),
-    "Remove Book": props<{ book: Book }>(),
+    'Add Book': props<{ book: Book }>(),
+    'Remove Book': props<{ book: Book }>(),
   },
 });
 
 export const BooksApiActions = createActionGroup({
-  source: "Books API",
+  source: 'Books API',
   events: {
-    "Retrieved Book List": props<{ books: ReadonlyArray<Book> }>(),
+    'Retrieved Book List': props<{ books: ReadonlyArray<Book> }>(),
   },
 });

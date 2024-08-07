@@ -6,11 +6,7 @@
   <div class="flex flex-col flex-1">
     <h2 class="text-xl font-semibold pb-2">Books</h2>
     <!-- TODO: add loader when books are being retrieved from API -->
-    <app-book-list
-      class="book-list"
-      [books]="(books$ | async)!"
-      (add)="onAdd($event)"
-    ></app-book-list>
+    <app-book-list class="book-list" [books]="(books$ | async)!" (add)="onAdd($event)"></app-book-list>
   </div>
 
   <div class="flex flex-col flex-1">
@@ -18,7 +14,6 @@
     <app-book-collection
       class="book-collection"
       [books]="(bookCollection$ | async)!"
-      (remove)="onRemove($event)"
-    ></app-book-collection>
+      (remove)="onRemove($event)"></app-book-collection>
   </div>
 </div>

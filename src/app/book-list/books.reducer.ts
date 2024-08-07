@@ -1,9 +1,9 @@
-import { createFeature, createReducer, on } from "@ngrx/store";
+import { createFeature, createReducer, on } from '@ngrx/store';
 
-import { BooksApiActions } from "./books.actions";
-import { Book } from "./books.model";
+import { BooksApiActions } from './books.actions';
+import { Book } from './books.model';
 
-export const booksFeatureKey = "books";
+export const booksFeatureKey = 'books';
 
 export const initialState: ReadonlyArray<Book> = [];
 

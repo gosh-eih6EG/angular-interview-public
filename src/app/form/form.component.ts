@@ -1,12 +1,12 @@
-import { Component, EventEmitter, Output } from "@angular/core";
-import { ReactiveFormsModule } from "@angular/forms";
+import { Component, EventEmitter, Output } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
-  selector: "app-form",
+  selector: 'app-form',
   standalone: true,
   imports: [ReactiveFormsModule],
-  templateUrl: "./form.component.html",
-  styleUrl: "./form.component.scss",
+  templateUrl: './form.component.html',
+  styleUrl: './form.component.scss',
 })
 export class FormComponent {
   @Output() enter: EventEmitter<string> = new EventEmitter<string>();
