@@ -9,6 +9,7 @@ import { selectCollection } from '../../book-collection/collections.selectors';
 import { Store } from '@ngrx/store';
 import { BooksActions } from '../../book-list/books.actions';
 import { Book } from '../../book-list/books.model';
+import { GoogleBooksService } from '../../book-list/books.service';
 
 @Component({
   selector: 'app-home',
@@ -20,8 +21,12 @@ import { Book } from '../../book-list/books.model';
 export class HomeComponent implements OnInit {
   books$ = this.store.select(selectAvailableBooks);
   bookCollection$ = this.store.select(selectCollection);
+  isLoading$ = this.booksService.isLoading$;
 
-  constructor(private store: Store) {}
+  constructor(
+    private store: Store,
+    private booksService: GoogleBooksService,
+  ) {}
 
   onSearch(query: string) {
     this.store.dispatch(BooksActions.search({ query }));
