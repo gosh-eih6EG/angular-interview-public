@@ -1,0 +1,8 @@
+<app-book *ngFor="let book of books" [book]="book">
+  <button
+    class="bg-blue-600 text-white py-1 px-2 rounded"
+    (click)="add.emit(book)"
+  >
+    Add to Collection
+  </button>
+</app-book>
