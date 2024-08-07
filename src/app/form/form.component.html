@@ -1,15 +1,26 @@
-<!--<form class="flex flex-row items-center gap-2 my-3">-->
-<!--  &lt;!&ndash; TODO 1: add form controls &ndash;&gt;-->
-<!--  &lt;!&ndash; TODO 2: submit form on enter when input is focused &ndash;&gt;-->
-<!--  <input-->
-<!--    id="checkbox"-->
-<!--    type="checkbox"-->
-<!--    value=""-->
-<!--    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2"/>-->
+<form class="flex flex-row items-center gap-2 my-3" [formGroup]="form">
+  <!-- TODO 1: add form controls -->
+  <!-- TODO 2: submit form on enter when input is focused -->
+  <input
+    id="checkbox"
+    type="checkbox"
+    value=""
+    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2"
+    [formControlName]="'checkbox'" />
 
-<!--  <label for="search" class="flex-0 text-sm">Search:</label>-->
-<!--  <input type="text" id="search" class="flex-1 py-1 px-2 border-1 border-b-blue-950 rounded"/>-->
+  <label for="search" class="flex-0 text-sm">Search:</label>
+  <input
+    type="text"
+    id="search"
+    class="flex-1 py-1 px-2 border-1 border-b-blue-950 rounded"
+    [formControlName]="'search'"
+    (keydown.enter)="onSubmit($event)" />
 
-<!--  &lt;!&ndash; TODO 3: disable when form is invalid, submit form on button click &ndash;&gt;-->
-<!--  <button class="flex-0 bg-blue-600 text-white py-1 px-2 rounded disabled:bg-gray-400">Submit</button>-->
-<!--</form>-->
+  <!-- TODO 3: disable when form is invalid, submit form on button click -->
+  <button
+    class="flex-0 bg-blue-600 text-white py-1 px-2 rounded disabled:bg-gray-400"
+    (click)="onSubmit($event)"
+    [disabled]="form.invalid">
+    Submit
+  </button>
+</form>
