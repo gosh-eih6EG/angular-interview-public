@@ -3,14 +3,28 @@ import { BooksEffects } from './books.effects';
 import { Observable } from 'rxjs';
 import { Action } from '@ngrx/store';
 import { provideMockActions } from '@ngrx/effects/testing';
+import SpyObj = jasmine.SpyObj;
+import { GoogleBooksService } from './books.service';
+import { BooksActions, BooksApiActions } from './books.actions';
+import { cold, hot } from 'jasmine-marbles';
 
 describe('BooksEffects', () => {
   let actions$: Observable<Action>;
   let effects: BooksEffects;
+  let apiSpy: SpyObj<GoogleBooksService>;
 
   beforeEach(() => {
+    apiSpy = jasmine.createSpyObj<GoogleBooksService>('GoogleBooksService', ['getBooks']);
+
     TestBed.configureTestingModule({
-      providers: [BooksEffects, provideMockActions(() => actions$)],
+      providers: [
+        BooksEffects,
+        provideMockActions(() => actions$),
+        {
+          provide: GoogleBooksService,
+          useValue: apiSpy,
+        },
+      ],
     });
 
     effects = TestBed.inject(BooksEffects);
@@ -22,5 +36,16 @@ describe('BooksEffects', () => {
 
   it('should call GoogleBooksService and return BooksApiActions.retrievedBookList action', () => {
     // TODO: complete unit test
+    const action = BooksActions.search({ query: 'Harry Potter' });
+    const completion = BooksApiActions.retrievedBookList({ books: [] });
+
+    actions$ = hot('-a', { a: action });
+    const response = cold('-r', { r: [] });
+    apiSpy.getBooks.and.returnValue(response);
+
+    const expected = cold('--c', { c: completion });
+
+    expect(effects.searchBooks$).toBeObservable(expected);
+    expect(apiSpy.getBooks).toHaveBeenCalled();
   });
 });
